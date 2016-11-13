@@ -206,6 +206,7 @@ FPs <- filter(test_output,!job_type & naive)$num
 # example false positive job description
 all_job_descripts[FPs[1]]
 
+# false negatives
 FNs <- filter(test_output,job_type & !naive)$num
 # example false negative job description
 all_job_descripts[FNs[1]]
