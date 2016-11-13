@@ -1,5 +1,3 @@
-# For full post, see
-# https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/
 
 ## if you haven't already installed jobbR
 # devtools::install_github("dashee87/jobbR")
