@@ -106,7 +106,8 @@ if(min(us_chart$chart_week)!=first_us_chart_date){
 }
 
 # load in JSON file
-uk_chart <- fromJSON("C:/Users/david.sheehan/Desktop/2017/November/Collabs/uk_chart_fixed.json") %>%
+uk_chart <- read_json("https://raw.githubusercontent.com/dashee87/blogScripts/master/files/uk_charts.json",
+                      simplifyVector = TRUE) %>%
   mutate(chart_week=as.Date(chart_week, format="%d %B %Y"))
 
 # some different types of collaborations
@@ -137,8 +138,9 @@ uk_chart <- inner_join(uk_chart,
 head(uk_chart)
 
 # repeat the process for Billboard Top 100
-us_chart <- jsonlite::fromJSON("C:/Users/david.sheehan/Desktop/2017/November/Collabs/us_chart.json")  %>%
-  dplyr::mutate(chart_week=as.Date(chart_week), artist= toupper(artist))
+us_chart <- read_json("https://raw.githubusercontent.com/dashee87/blogScripts/master/files/us_charts.json",
+                      simplifyVector = TRUE)  %>%
+  mutate(chart_week=as.Date(chart_week), artist= toupper(artist))
 us_chart <- inner_join(us_chart,
                        us_chart %>% group_by(artist) %>% 
                          summarize(one_hit=n_distinct(track)==1), by=c("artist"))
