@@ -128,7 +128,7 @@ def check_xi(match_day):
 
 epl_1318 = pd.DataFrame()
 for year in range(13,18):
-    epl_1318 = pd.concat((epl_1318, pd.read_csv("https://www.football-data.co.uk/mmz4281/1718/E0.csv")))
+    epl_1318 = pd.concat((epl_1318, pd.read_csv("https://www.football-data.co.uk/mmz4281/{}{}/E0.csv".format(year, year+1))))
 epl_1318['Date'] = pd.to_datetime(epl_1318['Date'],  format='%d/%m/%y')
 epl_1318['time_diff'] = (max(epl_1318['Date']) - epl_1318['Date']).dt.days
 epl_1318 = epl_1318[['HomeTeam','AwayTeam','FTHG','FTAG', 'FTR', 'time_diff']]
